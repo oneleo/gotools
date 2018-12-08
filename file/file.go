@@ -36,7 +36,7 @@ func ArrayToCsv(dstFilePath string, data [][]string) (err error) {
 
 	// Equal to: file, err := os.Create(dstFilePath)
 	// Reference: https://golang.org/src/os/file.go?s=8039:8078#L263
-	file, err := os.OpenFile(dstFilePath, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
+	file, err := os.OpenFile(dstFilePath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0666)
 	if err != nil {
 		log.Println("Error while creating file: ", dstFilePath, " - ", err)
 		return err
@@ -75,7 +75,7 @@ func ArrayAppendCsv(dstFilePath string, data [][]string) (err error) {
 		return err
 	}
 
-	file, err := os.OpenFile(dstFilePath, os.O_APPEND|os.O_CREATE, 0777)
+	file, err := os.OpenFile(dstFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0777)
 	if err != nil {
 		log.Println("Error while creating fiel: ", dstFilePath, " - ", err)
 		return err
@@ -153,7 +153,7 @@ func StringsToFile(dstFilePath string, data []string) (err error) {
 
 	// Equal to: file, err := os.Create(dstFilePath)
 	// Reference: https://golang.org/src/os/file.go?s=8039:8078#L263
-	file, err := os.OpenFile(dstFilePath, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
+	file, err := os.OpenFile(dstFilePath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0666)
 	if err != nil {
 		log.Println("Error while creating file: ", dstFilePath, " - ", err)
 		return err
@@ -199,7 +199,7 @@ func StringsAppendFile(dstFilePath string, data []string) (err error) {
 		return err
 	}
 
-	file, err := os.OpenFile(dstFilePath, os.O_APPEND|os.O_CREATE, 0777)
+	file, err := os.OpenFile(dstFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0777)
 	if err != nil {
 		log.Println("Error while creating file: ", dstFilePath, " - ", err)
 		return err
